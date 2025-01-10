@@ -5,13 +5,20 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton() {
   const [favorited, setFavorited] = useState(false);
-
+  // Initial state of favorite button is set to false or not selected 
+  // When user clicks on button it is set to true using update function
+  // form of setFavorited button
+  //The updater function receives the previous state (prev) as its argument.
+// The state toggles using !prev:
+// If prev is false (photo is not favorited), it becomes true
+// If prev is true (photo is favorited), it becomes false
   const handleClick = () => {
-    setFavorited((prev) => {
-      console.log(`Photo is now ${!prev ? 'favorited' : 'unfavorited'}`);
-      return !prev;
-    });
-  };
+  setFavorited((prev) => {
+    console.log(`Photo is now ${!prev ? 'favorited' : 'unfavorited'}`);
+    return !prev;
+  });
+  
+};
 
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>
