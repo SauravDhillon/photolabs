@@ -4,12 +4,12 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
   return (
-    <div>
-      <img src={props.photo.imageSource} />
+    <li>
+      <img className="photo-list__item" src={props.photo.imageSource} />
       <img src={props.photo.profile} />
       <p>{props.photo.username}</p>
       <p>{props.photo.location.city}, {props.photo.location.country}</p>
-    </div>
+    </li>
   );
 };
 
