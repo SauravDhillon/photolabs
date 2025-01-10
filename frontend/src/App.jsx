@@ -18,14 +18,7 @@ const sampleDataForPhotoListItem = {
 const App = () => {
   return (
     <div className="App">
-      <PhotoListItem
-       key={sampleDataForPhotoListItem.id}
-       mainPhoto={sampleDataForPhotoListItem.imageSource}
-       profilePhoto={sampleDataForPhotoListItem.profile}
-       username={sampleDataForPhotoListItem.username}
-       cityLocation={sampleDataForPhotoListItem.location.city}
-       countryLocation={sampleDataForPhotoListItem.location.country}
-       />
+      <PhotoListItem photo={sampleDataForPhotoListItem} />
     </div>
   );
 };
