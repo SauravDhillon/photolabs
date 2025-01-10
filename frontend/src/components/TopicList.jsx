@@ -25,7 +25,7 @@ const TopicList = () => {
   return (
     <nav className="top-nav-bar__topic-list">
       {sampleDataForTopicList.map((topic) => {
-        return <TopicListItem key={topic.id} topic={topic} />
+        return <TopicListItem key={topic.id} topicTitle={topic.title} />
       })}
     </nav>
   );

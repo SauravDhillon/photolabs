@@ -5,6 +5,7 @@ import './App.scss';
 import PhotoList from 'components/PhotoList';
 import TopicListItem from 'components/TopicListItem';
 import TopicList from 'components/TopicList';
+import TopNavigationBar from 'components/TopNavigationBar';
 
 
 
@@ -30,8 +31,9 @@ const App = () => {
         ))}
         </ul> 
         <TopicListItem label={sampleDataForTopicListItem.label} />
-        */}
         <TopicList />
+        */}
+        <TopNavigationBar />
         <PhotoList />
     </div>
   );
