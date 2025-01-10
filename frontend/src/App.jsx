@@ -3,6 +3,8 @@ import React from 'react';
 import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
 import PhotoList from 'components/PhotoList';
+import TopicListItem from 'components/TopicListItem';
+import TopicList from 'components/TopicList';
 
 
 
@@ -13,13 +15,23 @@ const App = () => {
   //   { ...sampleDataForPhotoListItem, id: "2"},
   //   { ...sampleDataForPhotoListItem, id: "3"},
   // ];
+
+  // const sampleDataForTopicListItem = {
+  //   id: "1",
+  //   slug: "topic-1",
+  //   label: "Nature",
+  // };
+
   return (
     <div className="App">
       {/*<ul className="photo-list">
         {photos.map((photo) => (
           <PhotoListItem key={photo.id} photo={photo} />
         ))}
-        </ul> */}
+        </ul> 
+        <TopicListItem label={sampleDataForTopicListItem.label} />
+        */}
+        <TopicList />
         <PhotoList />
     </div>
   );
