@@ -1,11 +1,6 @@
 import React from 'react';
-
-import PhotoListItem from './components/PhotoListItem';
 import './App.scss';
-import PhotoList from 'components/PhotoList';
-import TopicListItem from 'components/TopicListItem';
-import TopicList from 'components/TopicList';
-import TopNavigationBar from 'components/TopNavigationBar';
+import HomeRoute from 'components/HomeRoute';
 
 
 
@@ -32,9 +27,10 @@ const App = () => {
         </ul> 
         <TopicListItem label={sampleDataForTopicListItem.label} />
         <TopicList />
-        */}
         <TopNavigationBar />
         <PhotoList />
+        */}
+        <HomeRoute />
     </div>
   );
 };
