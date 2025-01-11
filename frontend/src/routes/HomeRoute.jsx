@@ -3,7 +3,7 @@ import '../styles/HomeRoute.scss';
 import TopNavigationBar from "components/TopNavigationBar";
 import PhotoList from "components/PhotoList";
 
-const HomeRoute = ({ photos, topics, favoritedPhotos, toggleFavorite }) => {
+const HomeRoute = ({ photos, favoritedPhotos, toggleFavorite, topics}) => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={topics} />

@@ -24,11 +24,13 @@ const App = () => {
 
   const toggleFavorite = (photoId) => {
     setFavoritedPhotos((prevFavorites) => {
-      prevFavorites.includes(photoId)
-        ? prevFavorites.filter((id) !== photoId)
-        : [...prevFavorites, photoId];
+      return prevFavorites.includes(photoId)
+        ? prevFavorites.filter(id => id !== photoId) // Remove if already favorited
+        : [...prevFavorites, photoId]; // Add if not favorited
     });
-  }
+  };
+
+  console.log('Favorited Photos:', favoritedPhotos);
 
   return (
     <div className="App">
