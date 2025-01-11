@@ -32,7 +32,7 @@ const App = () => {
         <TopNavigationBar />
         <PhotoList />
         */}
-        <HomeRoute />
+        <HomeRoute photos={photos} topics={topics}/>
     </div>
   );
 };
