@@ -20,17 +20,19 @@ const App = () => {
   //   slug: "topic-1",
   //   label: "Nature",
   // };
+
+  // We have used favoritedPhotos global state which we pass down as prop to all components to keep track of user favorites, initialized to be empty array
   const [favoritedPhotos, setFavoritedPhotos] = useState([]);
 
   const toggleFavorite = (photoId) => {
     setFavoritedPhotos((prevFavorites) => {
       return prevFavorites.includes(photoId)
-        ? prevFavorites.filter(id => id !== photoId) // Remove if already favorited
+        ? prevFavorites.filter(id => id !== photoId) // Remove photoId if already favorited using array filter function where we are making a new array of photos whose photoId is not same as photoId of photo we are checking 
         : [...prevFavorites, photoId]; // Add if not favorited
     });
   };
 
-  console.log('Favorited Photos:', favoritedPhotos);
+  console.log('Favorited Photos:', favoritedPhotos); // to check photos added to favoritedPhotos Array we will see photoIds here 
 
   return (
     <div className="App">

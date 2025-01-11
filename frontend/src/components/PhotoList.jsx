@@ -69,7 +69,7 @@ const PhotoList = ({ photos, favoritedPhotos, toggleFavorite }) => {
         return <PhotoListItem
           key={photo.id}
           photo={photo}
-          isFavorited={favoritedPhotos.includes(photo.id)}
+          isFavorited={favoritedPhotos.includes(photo.id)} //If favoritedPhotos array includes photoId it means this item is favorited
           toggleFavorite={toggleFavorite}
         />
       })}
