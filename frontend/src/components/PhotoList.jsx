@@ -57,7 +57,7 @@ import PhotoListItem from "./PhotoListItem";
 //   },
 // ];
 
-const PhotoList = ({ photos }) => {
+const PhotoList = ({ photos, favoritedPhotos, toggleFavorite }) => {
   return (
     // <ul className="photo-list">
     //   {sampleDataForPhotoList.map((photo) => {
@@ -66,7 +66,12 @@ const PhotoList = ({ photos }) => {
     // </ul>
     <ul className="photo-list">
       {photos.map((photo) => {
-        return <PhotoListItem key={photo.id} photo={photo} />
+        return <PhotoListItem
+          key={photo.id}
+          photo={photo}
+          isFavorited={favoritedPhotos.includes(photo.id)}
+          toggleFavorite={toggleFavorite}
+        />
       })}
     </ul>
   );

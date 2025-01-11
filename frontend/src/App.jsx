@@ -3,6 +3,7 @@ import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
+import { useState } from 'react';
 
 
 
@@ -19,6 +20,15 @@ const App = () => {
   //   slug: "topic-1",
   //   label: "Nature",
   // };
+  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+
+  const toggleFavorite = (photoId) => {
+    setFavoritedPhotos((prevFavorites) => {
+      prevFavorites.includes(photoId)
+        ? prevFavorites.filter((id) !== photoId)
+        : [...prevFavorites, photoId];
+    });
+  }
 
   return (
     <div className="App">
@@ -32,7 +42,12 @@ const App = () => {
         <TopNavigationBar />
         <PhotoList />
         */}
-        <HomeRoute photos={photos} topics={topics}/>
+      <HomeRoute
+        photos={photos}
+        topics={topics}
+        favoritedPhotos={favoritedPhotos}
+        toggleFavorite={toggleFavorite}
+      />
     </div>
   );
 };
