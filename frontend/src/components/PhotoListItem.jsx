@@ -19,7 +19,7 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavorite, openModal }) => {
       />
       <img className="photo-list__image"
         src={photo.urls.regular}
-        onClick={() => openModal(photo)}
+        onClick={() => openModal(photo)} //The wrapper (() => {}) is necessary because: openModal(photo) is a function call that requires an argument (photo).If we directly wrote onClick={openModal(photo)}, the openModal(photo) function would be immediately invoked when the component renders, which is not what we want.The wrapper ensures that openModal(photo) is called only when the onClick event occurs.
       />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.user.profile} />

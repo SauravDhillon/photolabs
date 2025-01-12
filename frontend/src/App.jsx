@@ -46,6 +46,11 @@ const App = () => {
     setIsModalOpen(true);
   }
 
+  const closeModal = () => {
+    setSelectedPhoto(null);
+    setIsModalOpen(false);
+  }
+
   return (
     <div className="App">
       {/*<ul className="photo-list">
@@ -69,6 +74,7 @@ const App = () => {
       {isModalOpen && (
         <PhotoDetailsModal
           photo={selectedPhoto}
+          closeModal={closeModal}
         />
       )}
     </div>
