@@ -75,6 +75,8 @@ const App = () => {
         <PhotoDetailsModal
           photo={selectedPhoto}
           closeModal={closeModal}
+          favoritedPhotos={favoritedPhotos}
+          toggleFavorite={toggleFavorite}
         />
       )}
     </div>
