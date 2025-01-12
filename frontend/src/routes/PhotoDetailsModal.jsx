@@ -6,7 +6,7 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, toggleFavorite, openModal }) => {
-  console.log(photo);
+  // console.log(photo);
   return (
     <div className="photo-details-modal">
       {/* Close Button */}
@@ -34,11 +34,12 @@ const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, to
             </div>
           </div>
         </div>
-        <h1 className="photo-details-modal__header">Similar Photos</h1>
+        
         </div>
 
         
       <div className="photo-details-modal__images">
+      <h1 className="photo-details-modal__header">Similar Photos</h1>
         <PhotoList
           photos={Object.values(photo.similar_photos)}
           favoritedPhotos={favoritedPhotos}
