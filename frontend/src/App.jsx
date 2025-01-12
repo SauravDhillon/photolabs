@@ -4,6 +4,7 @@ import HomeRoute from 'routes/HomeRoute';
 import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import { useState } from 'react';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 
 
@@ -21,8 +22,13 @@ const App = () => {
   //   label: "Nature",
   // };
 
-  // We have used favoritedPhotos global state which we pass down as prop to all components to keep track of user favorites, initialized to be empty array
+  // We have used favoritedPhotos array global state which we pass down as prop to all components to keep track of user favorites, initialized to be empty array
   const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+
+  // Defining a state to open new Modal when user clicks on photo
+  // Second state to track selected photo
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const toggleFavorite = (photoId) => {
     setFavoritedPhotos((prevFavorites) => {
@@ -33,6 +39,12 @@ const App = () => {
   };
 
   console.log('Favorited Photos:', favoritedPhotos); // to check photos added to favoritedPhotos Array we will see photoIds here 
+
+  // Helper function to manage modal open logic
+  const openModal = (photo) => {
+    setSelectedPhoto(photo);
+    setIsModalOpen(true);
+  }
 
   return (
     <div className="App">
@@ -51,7 +63,14 @@ const App = () => {
         topics={topics}
         favoritedPhotos={favoritedPhotos}
         toggleFavorite={toggleFavorite}
+        openModal={openModal}
       />
+      {/*Conditionally rendering the modal */}
+      {isModalOpen && (
+        <PhotoDetailsModal
+          photo={selectedPhoto}
+        />
+      )}
     </div>
   );
 };

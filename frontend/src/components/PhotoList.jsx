@@ -57,7 +57,7 @@ import PhotoListItem from "./PhotoListItem";
 //   },
 // ];
 
-const PhotoList = ({ photos, favoritedPhotos, toggleFavorite }) => {
+const PhotoList = ({ photos, favoritedPhotos, toggleFavorite, openModal }) => {
   return (
     // <ul className="photo-list">
     //   {sampleDataForPhotoList.map((photo) => {
@@ -71,6 +71,7 @@ const PhotoList = ({ photos, favoritedPhotos, toggleFavorite }) => {
           photo={photo}
           isFavorited={favoritedPhotos.includes(photo.id)} //If favoritedPhotos array includes photoId it means this item is favorited
           toggleFavorite={toggleFavorite}
+          openModal={openModal}
         />
       })}
     </ul>
