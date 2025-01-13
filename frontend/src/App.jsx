@@ -5,6 +5,7 @@ import photos from 'mocks/photos';
 import topics from 'mocks/topics';
 import { useState } from 'react';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 
 
@@ -23,33 +24,42 @@ const App = () => {
   // };
 
   // We have used favoritedPhotos array global state which we pass down as prop to all components to keep track of user favorites, initialized to be empty array
-  const [favoritedPhotos, setFavoritedPhotos] = useState([]);
+  // const [favoritedPhotos, setFavoritedPhotos] = useState([]);
 
   // Defining a state to open new Modal when user clicks on photo
   // Second state to track selected photo
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [selectedPhoto, setSelectedPhoto] = useState(null);
 
-  const toggleFavorite = (photoId) => {
-    setFavoritedPhotos((prevFavorites) => {
-      return prevFavorites.includes(photoId)
-        ? prevFavorites.filter(id => id !== photoId) // Remove photoId if already favorited using array filter function where we are making a new array of photos whose photoId is not same as photoId of photo we are checking 
-        : [...prevFavorites, photoId]; // Add if not favorited
-    });
-  };
+  // const toggleFavorite = (photoId) => {
+  //   setFavoritedPhotos((prevFavorites) => {
+  //     return prevFavorites.includes(photoId)
+  //       ? prevFavorites.filter(id => id !== photoId) // Remove photoId if already favorited using array filter function where we are making a new array of photos whose photoId is not same as photoId of photo we are checking 
+  //       : [...prevFavorites, photoId]; // Add if not favorited
+  //   });
+  // };
 
-  console.log('Favorited Photos:', favoritedPhotos); // to check photos added to favoritedPhotos Array we will see photoIds here 
+  // console.log('Favorited Photos:', favoritedPhotos); // to check photos added to favoritedPhotos Array we will see photoIds here 
 
   // Helper function to manage modal open logic
-  const openModal = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
-  }
+  // const openModal = (photo) => {
+  //   setSelectedPhoto(photo);
+  //   setIsModalOpen(true);
+  // }
 
-  const closeModal = () => {
-    setSelectedPhoto(null);
-    setIsModalOpen(false);
-  }
+  // const closeModal = () => {
+  //   setSelectedPhoto(null);
+  //   setIsModalOpen(false);
+  // }
+
+  // Separation of concerns separated state management logic from 
+  // rendering logic using useApplicationData logic
+  const {
+    state: { favoritedPhotos, isModalOpen, selectedPhoto },
+    updateToFavPhotoIds,
+    setPhotoSelected,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className="App">
@@ -67,17 +77,17 @@ const App = () => {
         photos={photos}
         topics={topics}
         favoritedPhotos={favoritedPhotos}
-        toggleFavorite={toggleFavorite}
-        openModal={openModal}
+        toggleFavorite={updateToFavPhotoIds}
+        openModal={setPhotoSelected}
       />
       {/*Conditionally rendering the modal */}
       {isModalOpen && (
         <PhotoDetailsModal
           photo={selectedPhoto}
-          closeModal={closeModal}
+          closeModal={onClosePhotoDetailsModal}
           favoritedPhotos={favoritedPhotos}
           isFavorited={favoritedPhotos.length > 0}
-          toggleFavorite={toggleFavorite}
+          toggleFavorite={updateToFavPhotoIds}
         />
       )}
     </div>
