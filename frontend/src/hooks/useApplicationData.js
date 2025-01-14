@@ -120,7 +120,7 @@ const useApplicationData = () => {
         return response.json();
       })
       .then((photoData) => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData});
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData });
       })
       .catch((error) => {
         console.error("Error fetching photos for topic:", error);
@@ -132,11 +132,11 @@ const useApplicationData = () => {
       fetch('/api/photos').then(res => res.json()),
       fetch('/api/topics').then(res => res.json()),
     ])
-    .then(([photoData, topicData]) => {
-      // Dispatch is doing similar kind of function like setState
-      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }); 
-      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData });
-    });
+      .then(([photoData, topicData]) => {
+        // Dispatch is doing similar kind of function like setState
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData });
+      });
   }, []);
 
   return {

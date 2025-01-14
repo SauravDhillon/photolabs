@@ -20,10 +20,10 @@ function PhotoFavButton({ photoId, isFavorited, toggleFavorite }) {
 
   // };
   const handleClick = () => {
-   // Here toggleFavorite will check if this photoId exists in favoritedPhotos Array if yes then it will remove it or unfavorite it
-    toggleFavorite(photoId); 
+    // Here toggleFavorite will check if this photoId exists in favoritedPhotos Array if yes then it will remove it or unfavorite it
+    toggleFavorite(photoId);
   }
-  
+
 
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}>

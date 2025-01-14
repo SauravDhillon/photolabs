@@ -80,7 +80,7 @@ const App = () => {
         favoritedPhotos={favoritedPhotos}
         toggleFavorite={updateToFavPhotoIds}
         openModal={setPhotoSelected}
-        onTopicClick={fetchPhotosByTopic} 
+        onTopicClick={fetchPhotosByTopic}
       />
       {/*Conditionally rendering the modal */}
       {isModalOpen && (

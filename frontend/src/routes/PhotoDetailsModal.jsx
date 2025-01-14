@@ -1,5 +1,4 @@
 import React from 'react';
-
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
@@ -34,12 +33,12 @@ const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, to
             </div>
           </div>
         </div>
-        
-        </div>
 
-        
+      </div>
+
+
       <div className="photo-details-modal__images">
-      <h1 className="photo-details-modal__header">Similar Photos</h1>
+        <h1 className="photo-details-modal__header">Similar Photos</h1>
         <PhotoList
           photos={Object.values(photo.similar_photos)}
           favoritedPhotos={favoritedPhotos}

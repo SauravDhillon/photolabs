@@ -28,12 +28,12 @@ const TopicList = ({ topics, onTopicClick }) => {
         return <TopicListItem key={topic.id} topicTitle={topic.title} />
       })} */}
       {topics.map((topic) => {
-        return <TopicListItem 
-                 key={topic.id} 
-                 topicId={topic.id} 
-                 topicTitle={topic.title}
-                 onTopicClick={onTopicClick} 
-          />
+        return <TopicListItem
+          key={topic.id}
+          topicId={topic.id}
+          topicTitle={topic.title}
+          onTopicClick={onTopicClick}
+        />
       })}
     </nav>
   );
