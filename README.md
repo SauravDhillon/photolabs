@@ -12,8 +12,26 @@ PhotoLabs is a React-based single-page application (SPA) that allows users to vi
 - **API Integration**: The client-side application communicates with the backend API for data handling.
 
 ## Final Product
-!["screenshot description"](#)
-!["screenshot description"](#)
+
+### Homepage of PhotoLabs
+!["Home Page of PhotoLabs"](https://github.com/SauravDhillon/photolabs/blob/main/docs/Home_Page.png?raw=true)
+
+### Homepage with favorite photos selected
+#### Favorite badge on top right will display a notification when any photo in the app is favorited 
+!["Home Page with favorite photos selected"](https://github.com/SauravDhillon/photolabs/blob/main/docs/Home_Page_favorites_selected.png?raw=true)
+
+### Animals topic specific photos
+#### Animals category photos displayed when choosen from Top Navigation Bar from list of various topics
+!["Animals topic specific photos"](https://github.com/SauravDhillon/photolabs/blob/main/docs/HomePage_Animal_topic_selected.png?raw=true)
+
+### Photo Modal Window opened after clicking on any photo
+!["Photo Modal Window"](https://github.com/SauravDhillon/photolabs/blob/main/docs/Photo_modal_opened.png?raw=true)
+
+### Favorited photo inside photo modal 
+!["Photo Modal photo favorited"](https://github.com/SauravDhillon/photolabs/blob/main/docs/Photo_modal_photo_favorited.png?raw=true)
+
+### Similar photos inside photo modal
+!["screenshot description"](https://github.com/SauravDhillon/photolabs/blob/main/docs/Photo_modal_similar_photos.png?raw=true)
 
 ## Technologies Used
 
