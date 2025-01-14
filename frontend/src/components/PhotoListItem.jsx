@@ -9,7 +9,6 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavorite, openModal }) => {
   //    return <PhotoDetailsModal />
   // } 
 
-
   return (
     <li className="photo-list__item">
       <PhotoFavButton

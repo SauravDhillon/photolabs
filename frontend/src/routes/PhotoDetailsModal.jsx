@@ -5,12 +5,11 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, toggleFavorite, openModal }) => {
-  // console.log(photo);
   return (
     <div className="photo-details-modal">
       {/* Close Button */}
       <button className="photo-details-modal__close-button"
-        onClick={closeModal}> {/*We just pass ref here not call the function since it will close modal as soon as it opens one( during rendering)if we call it */}
+        onClick={closeModal}> {/*We just pass ref here not call the function since it will close modal as soon as it opens one (during rendering) if we call it */}
         <img src={closeSymbol} alt="close symbol" />
       </button>
 

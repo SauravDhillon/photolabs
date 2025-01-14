@@ -1,4 +1,4 @@
-import { useReducer, useState, useEffect } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 /*
 const useApplicationData = () => {
   // We have used favoritedPhotos array global state which we pass down as prop to all components to keep track of user favorites, initialized to be empty array
@@ -36,7 +36,7 @@ const useApplicationData = () => {
 };
 */
 // Creating custom hook using useReducer example
-// Define Actions
+// Defined Actions
 const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -57,7 +57,7 @@ const initialState = {
 };
 
 
-// Define Reducer - The reducer will return a new state object each time it handles a dispatched action
+// Defined Reducer - The reducer will return a new state object each time it handles a dispatched action
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
@@ -89,7 +89,7 @@ function reducer(state, action) {
   }
 }
 
-// Define Custom Hook 
+// Defined Custom Hook 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
