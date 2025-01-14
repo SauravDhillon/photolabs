@@ -21,14 +21,19 @@ import TopicListItem from "./TopicListItem";
 //   },
 // ];
 
-const TopicList = ({ topics }) => {
+const TopicList = ({ topics, onTopicClick }) => {
   return (
     <nav className="top-nav-bar__topic-list">
       {/* {sampleDataForTopicList.map((topic) => {
         return <TopicListItem key={topic.id} topicTitle={topic.title} />
       })} */}
       {topics.map((topic) => {
-        return <TopicListItem key={topic.id} topicTitle={topic.title} />
+        return <TopicListItem 
+                 key={topic.id} 
+                 topicId={topic.id} 
+                 topicTitle={topic.title}
+                 onTopicClick={onTopicClick} 
+          />
       })}
     </nav>
   );

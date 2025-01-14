@@ -44,7 +44,7 @@ const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
-  CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS',
+  CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS'
 };
 
 // Initial State
@@ -75,7 +75,7 @@ function reducer(state, action) {
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
-      return { ...state, topicData: action.payload.topicData };
+      return { ...state, topicData: action.payload };
     case ACTIONS.SELECT_PHOTO:
       return { ...state, selectedPhoto: action.payload.photo };
     case ACTIONS.DISPLAY_PHOTO_DETAILS:
@@ -110,17 +110,33 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
+  // function to fetch different image categories when users click on specific photo topics in the top navigation
+  const fetchPhotosByTopic = (topicId) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch photos");
+        }
+        return response.json();
+      })
+      .then((photoData) => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData});
+      })
+      .catch((error) => {
+        console.error("Error fetching photos for topic:", error);
+      });
+  };
+
   useEffect(() => {
-    // use the fetch API to make an AJAX request to the backend 
-  fetch('/api/photos')
-  .then(res => res.json())
-  .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data}));  // Dispatch is doing similar kind of function like setState
-  }, []);
-  
-  useEffect(() => {
-    fetch('/api/topics')
-      .then((response) => response.json())
-      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: { topicData: data } }));
+    Promise.all([
+      fetch('/api/photos').then(res => res.json()),
+      fetch('/api/topics').then(res => res.json()),
+    ])
+    .then(([photoData, topicData]) => {
+      // Dispatch is doing similar kind of function like setState
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photoData }); 
+      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topicData });
+    });
   }, []);
 
   return {
@@ -128,6 +144,7 @@ const useApplicationData = () => {
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
+    fetchPhotosByTopic,
   };
 };
 
