@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
-import { useState } from 'react';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
+// import photos from 'mocks/photos';
+// import topics from 'mocks/topics';
+
 
 
 
@@ -55,7 +55,7 @@ const App = () => {
   // Separation of concerns separated state management logic from 
   // rendering logic using useApplicationData logic
   const {
-    state: { favoritedPhotos, isModalOpen, selectedPhoto },
+    state: { favoritedPhotos, isModalOpen, selectedPhoto, photoData, topicData },
     updateToFavPhotoIds,
     setPhotoSelected,
     onClosePhotoDetailsModal,
@@ -74,8 +74,8 @@ const App = () => {
         <PhotoList />
         */}
       <HomeRoute
-        photos={photos}
-        topics={topics}
+        photos={photoData}
+        topics={topicData}
         favoritedPhotos={favoritedPhotos}
         toggleFavorite={updateToFavPhotoIds}
         openModal={setPhotoSelected}

@@ -58,6 +58,7 @@ import PhotoListItem from "./PhotoListItem";
 // ];
 
 const PhotoList = ({ photos, favoritedPhotos, toggleFavorite, openModal }) => {
+  console.log(photos);
   return (
     // <ul className="photo-list">
     //   {sampleDataForPhotoList.map((photo) => {
