@@ -3,7 +3,6 @@ import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
-
 const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, toggleFavorite, openModal }) => {
   return (
     <div className="photo-details-modal">
@@ -12,7 +11,6 @@ const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, to
         onClick={closeModal}> {/*We just pass ref here not call the function since it will close modal as soon as it opens one (during rendering) if we call it */}
         <img src={closeSymbol} alt="close symbol" />
       </button>
-
       {/* Main Photo */}
       <div className="photo-details-modal__top-bar">
         <PhotoFavButton
@@ -32,12 +30,10 @@ const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, to
             </div>
           </div>
         </div>
-
       </div>
-
-
+      
       <div className="photo-details-modal__images">
-        <h1 className="photo-details-modal__header">Similar Photos</h1>
+        <h1 className="photo-details-modal__header">Related Photos</h1>
         <PhotoList
           photos={Object.values(photo.similar_photos)}
           favoritedPhotos={favoritedPhotos}
@@ -48,5 +44,4 @@ const PhotoDetailsModal = ({ photo, isFavorited, closeModal, favoritedPhotos, to
     </div>
   )
 };
-
 export default PhotoDetailsModal;

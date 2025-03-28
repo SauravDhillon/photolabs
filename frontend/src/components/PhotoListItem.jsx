@@ -1,14 +1,11 @@
 import React from "react";
-
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 import PhotoDetailsModal from "routes/PhotoDetailsModal";
-
 const PhotoListItem = ({ photo, isFavorited, toggleFavorite, openModal }) => {
   // const displayModal = () => {
   //    return <PhotoDetailsModal />
   // } 
-
   return (
     <li className="photo-list__item">
       <PhotoFavButton
@@ -32,5 +29,4 @@ const PhotoListItem = ({ photo, isFavorited, toggleFavorite, openModal }) => {
     </li>
   );
 };
-
 export default PhotoListItem;
