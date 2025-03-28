@@ -1,8 +1,6 @@
 import React from "react";
-
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
-
 // const sampleDataForTopicList = [
 //   {
 //     id: "1",
@@ -20,12 +18,11 @@ import TopicListItem from "./TopicListItem";
 //     title: "People",
 //   },
 // ];
-
 const TopicList = ({ topics, onTopicClick }) => {
   return (
     <nav className="top-nav-bar__topic-list">
       {/* {sampleDataForTopicList.map((topic) => {
-        return <TopicListItem key={topic.id} topicTitle={topic.title} />
+        return <TopicListItem key={topic.id} topic={topic} />
       })} */}
       {topics.map((topic) => {
         return <TopicListItem
@@ -38,5 +35,4 @@ const TopicList = ({ topics, onTopicClick }) => {
     </nav>
   );
 };
-
 export default TopicList;
