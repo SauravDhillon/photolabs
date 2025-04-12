@@ -36,7 +36,7 @@ const useApplicationData = () => {
 };
 */
 // Creating custom hook using useReducer example
-// Defined Actions
+// Defined Actions objects consisting of various actions to modify state
 const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
   FAV_PHOTO_REMOVED: 'FAV_PHOTO_REMOVED',
@@ -47,7 +47,7 @@ const ACTIONS = {
   CLOSE_PHOTO_DETAILS: 'CLOSE_PHOTO_DETAILS'
 };
 
-// Initial State
+// Initial State global object containing initial states defined in this application
 const initialState = {
   favoritedPhotos: [],
   isModalOpen: false,
@@ -57,12 +57,12 @@ const initialState = {
 };
 
 
-// Defined Reducer - The reducer will return a new state object each time it handles a dispatched action
+// Defined Reducer - The reducer will return a new state object each time it handles a dispatched action basically state is being modified by the action in the reducer function
 function reducer(state, action) {
   switch (action.type) {
     case ACTIONS.FAV_PHOTO_ADDED:
       return {
-        ...state, // used spread operator here to clone state, used spread operator to maintain the previous state before updating specific properties
+        ...state, // used spread operator here to clone state, used spread operator to maintain the previous state before updating specific properties, we are returning original state object and some specific state which get modified due to action on state
         favoritedPhotos: [...state.favoritedPhotos, action.payload.id],
       };
     case ACTIONS.FAV_PHOTO_REMOVED:
@@ -72,13 +72,13 @@ function reducer(state, action) {
           (id) => id !== action.payload.id  // Here we checked if that photo is already favorited remove from favorites
         ),
       };
-    case ACTIONS.SET_PHOTO_DATA:
+    case ACTIONS.SET_PHOTO_DATA: // in this action we appended the fetch data in the state
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
-    case ACTIONS.SELECT_PHOTO:
+    case ACTIONS.SELECT_PHOTO:  // in this action we add the selected photo on the modal opened when we click on photolistitem image
       return { ...state, selectedPhoto: action.payload.photo };
-    case ACTIONS.DISPLAY_PHOTO_DETAILS:
+    case ACTIONS.DISPLAY_PHOTO_DETAILS: // in this action modal is opened 
       return { ...state, isModalOpen: true };
     case ACTIONS.CLOSE_PHOTO_DETAILS:
       return { ...state, isModalOpen: false, selectedPhoto: null };
@@ -92,7 +92,8 @@ function reducer(state, action) {
 // Defined Custom Hook 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  
+  // Below function is similar to toggleFavorite function where we update the state by dispatching an action object defined in dispatch function, each action object contains type key and payload key which inside the reducer function updates the state 
   const updateToFavPhotoIds = (photoId) => {
     if (state.favoritedPhotos.includes(photoId)) {
       dispatch({ type: ACTIONS.FAV_PHOTO_REMOVED, payload: { id: photoId } });
@@ -101,16 +102,19 @@ const useApplicationData = () => {
     }
   };
 
+  // This function is same as openModal function defined in earlier exercise
+  // where first action being dispatched is for setting selected photo and second action is for opening modal 
   const setPhotoSelected = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: { photo } });
     dispatch({ type: ACTIONS.DISPLAY_PHOTO_DETAILS });
   };
 
+  // This function is same as closeModal function where we dispatch close photo details action without any payload because it doesn't need any payload
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_DETAILS });
   };
 
-  // function to fetch different image categories when users click on specific photo topics in the top navigation
+  // function to fetch different images for different topics when users click on specific photo topics in the top navigation
   const fetchPhotosByTopic = (topicId) => {
     fetch(`http://localhost:8001/api/topics/photos/${topicId}`)
       .then((response) => {
@@ -127,6 +131,7 @@ const useApplicationData = () => {
       });
   };
 
+  // Promise.all consists of array of two promises and resolves to array of photoData and topicData which are dispatched in an action to reducer function to modify the state 
   useEffect(() => {
     Promise.all([
       fetch('/api/photos').then(res => res.json()),
